@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+import { TOKEN } from "./Constants";
 export const fetchFunc = async (
   method = "get",
   endpoint = "",
@@ -9,6 +11,7 @@ export const fetchFunc = async (
     method,
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${Cookies.get(TOKEN)}`,
     },
   });
 };

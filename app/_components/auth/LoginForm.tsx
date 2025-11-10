@@ -26,6 +26,7 @@ const LoginForm = () => {
       const req = await fetchFunc("post", apis.login, data);
       const res = await req.json();
       setUserData(res);
+      nav.replace(links.home);
     } catch (error: unknown) {
       console.log(error?.message || "");
     }

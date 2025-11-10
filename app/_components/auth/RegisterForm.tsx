@@ -10,8 +10,11 @@ import Cookies from "js-cookie";
 import { TOKEN, USER_DATA } from "@/app/_util/Constants";
 import { links } from "@/routes/links";
 import { useUser } from "@/app/_contexts/UserContext";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
+  const nav = useRouter();
+
   const { setUser, setUserData } = useUser();
   const {
     register,
@@ -25,6 +28,7 @@ const RegisterForm = () => {
       const req = await fetchFunc("post", apis.register, data);
       const res = await req.json();
       setUserData(res);
+      nav.replace(links.home);
     } catch (error: unknown) {
       console.log(error?.message || "");
     }

@@ -9,13 +9,16 @@ const ChangeStatus = ({
   ...props
 }: React.ComponentProps<typeof CheckboxPrimitive.Root>) => {
   const updateTodoStatus = async (status: boolean) => {
-    await fetchFunc("PATCH", `${apis.todos}/${props.id}`, {
+    await fetchFunc("PATCH", `${apis.todos}/${props.data._id}`, {
       isComplete: status,
     });
   };
   return (
     <>
-      <Checkbox onCheckedChange={updateTodoStatus} />
+      <Checkbox
+        defaultChecked={props.data.isComplete}
+        onCheckedChange={updateTodoStatus}
+      />
     </>
   );
 };

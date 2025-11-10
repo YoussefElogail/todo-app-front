@@ -17,7 +17,7 @@ const ShowTodo = async ({ params }) => {
       <div className="flex justify-between items-center">
         <div className="flex gap-2 items-center">
           <h1>{data.title}</h1>
-          <ChangeStatus id={id} />
+          <ChangeStatus data={data} />
         </div>
         <Link href={`${links.todos}/${id}/edit`}>
           <Button>Edit</Button>
